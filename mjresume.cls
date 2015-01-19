@@ -14,8 +14,8 @@
 
 %%%%%%%% Class Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareOption{sidebar}{
-	\renewcommand\@makeheader{
-		{\fontsize{23pt}{27.6pt}\gothic \@name}\\[6pt]
+	\newcommand\@makeheader{
+		{\fontsize{23pt}{27.6pt}\gothic \@name}\\[0.2\baselineskip]
 		{\fontsize{12pt}{14.4pt}\gothic \@title}\par
 		\onehalfspacing\fontsize{10pt}{12pt}\selectfont\fontspec{Segoe UI}\@contactinfo\par
 	}
@@ -31,7 +31,7 @@
 		\end{minipage}\end{adjustbox}\hfill
 	}
 	
-	\renewenvironment{main}{
+	\newenvironment{main}{
 		\renewcommand\section[1]{
 			\vspace{0.3\baselineskip}
 			\rule[0.25\baselineskip]{2cm}{2pt}\quad
@@ -42,6 +42,7 @@
 		\end{minipage}\end{adjustbox}
 	}
 }
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -73,6 +74,15 @@
 
 \pagestyle{empty}
 
+\def\provideenvironment{\@star@or@long\provide@environment}
+\def\provide@environment#1{%
+        \@ifundefined{#1}%
+                {\def\reserved@a{\newenvironment{#1}}}%
+                {\def\reserved@a{\renewenvironment{dummy@environ}}}%
+        \reserved@a
+}
+\def\dummy@environ{}
+
 %%%%%%%% Defining commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\name#1{
 	\def\@name{#1}
@@ -86,12 +96,8 @@
 	\def\@contactinfo{#1}
 }
 
-\renewcommand\section[1]{
-	\ClassWarning{mjresume}{\protect\section must be used in the 'main' or 'side' environments}
-}
-
 \newenvironment{bullets}{
-		\vspace{-0.7\baselineskip}
+		\vspace{-0.55\baselineskip}
 	\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
 }{
 	\end{itemize}
@@ -99,28 +105,28 @@
 }
 
 \newcommand{\entry}[3]{
-	\vspace{0.3\baselineskip}
+	\vspace{0.1\baselineskip}
 	{
 		\fontsize{12}{14.4} \sans
 		#1 \ifblank{#1}{}{\ifblank{#2}{}{|}} #2 \hfill \textit{#3}
-	}\\[-0.7\baselineskip]
+	}\\[-0.8\baselineskip]
 }
 
-\newcommand\@makeheader{
-	\parbox{2.5in}{\raggedright
-		{\fontsize{30pt}{36pt}\gothic \@name}\\
-		{\fontsize{15pt}{18pt}\gothic \@title}
-	}\hfill
-	\parbox{2.5in}{\raggedleft\onehalfspacing
-		\@contactinfo
-	}\\[\baselineskip]
-}
+\providecommand\@makeheader{
+		\parbox{2.5in}{\raggedright
+			{\fontsize{30pt}{36pt}\selectfont\gothic \@name}\\[0.2\baselineskip]
+			{\fontsize{15pt}{18pt}\selectfont\gothic \@title}
+		}\hfill
+		\parbox{2.5in}{\raggedleft\onehalfspacing
+			\@contactinfo
+		}\\[\baselineskip]
+	}
 
-\newenvironment{side}{
+\provideenvironment{side}{
 	\ClassWarning{mjresume}{'side' environment requires 'sidebar' option}
 }{}
 
-\newenvironment{main}{
+\provideenvironment{main}{
 	\renewcommand\section[1]{
 		\vspace{0.3\baselineskip}
 		\rule[0.25\baselineskip]{2cm}{2pt}\quad
