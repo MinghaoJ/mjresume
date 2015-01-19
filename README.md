@@ -54,4 +54,4 @@ automatically update.
         ...
     \end{bullets}}
 
-Use instead of \itemize to ensure proper spacing.
+Use instead of `\itemize` to ensure proper spacing.
