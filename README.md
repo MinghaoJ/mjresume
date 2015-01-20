@@ -53,6 +53,6 @@ automatically update.
     \begin{bullets}
         \item content
         ...
-    \end{bullets}}
+    \end{bullets}
 
 Use instead of `\itemize` to ensure proper spacing.
