@@ -1,6 +1,7 @@
 mjresume
 ========
-Custom resume class for LaTeX by Minghao Ji.
+Custom resume class for LuaLaTeX by Minghao Ji.
+NOTE: This class must be compiled using LuaLaTeX, which is included in most TeX distributions.
 
 Overview
 --------
