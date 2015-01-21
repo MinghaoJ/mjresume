@@ -29,6 +29,19 @@ Available options are:
 Commands
 --------
 
+    \mainfont{...}
+    \entryfont{...}
+    \headingfont{...}
+    
+Optionally changes the default fonts used by the class. This is helpful if your system is missing any of the default fonts. All arguments should be the full name of the font, as per the `fontspec` package (e.g. "Times New Roman", "Helvetica", etc.).
+
+Default fonts:
+* mainfont: Segoe UI
+* entryfont: Gill Sans MT
+* headingfont: Century Gothic
+
+----------------------------------------------------------------------------------------------
+
     \name{...}
     \title{...}
     \contactinfo{...}
