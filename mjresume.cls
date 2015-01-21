@@ -15,14 +15,14 @@
 %%%%%%%% Class Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareOption{sidebar}{
 	\newcommand\@makeheader{
-		{\fontsize{23pt}{27.6pt}\gothic \@name}\\[0.2\baselineskip]
-		{\fontsize{12pt}{14.4pt}\gothic \@title}\par
+		{\fontsize{23pt}{27.6pt}\@headingfontfamily \@name}\\[0.2\baselineskip]
+		{\fontsize{12pt}{14.4pt}\@headingfontfamily \@title}\par
 		\onehalfspacing\fontsize{10pt}{12pt}\selectfont\fontspec{Segoe UI}\@contactinfo\par
 	}
 
 	\newenvironment{side}{
 		\renewcommand\section[1]{
-			{\fontsize{14}{16.8}\selectfont\gothic\strut##1}\\
+			{\fontsize{14}{16.8}\selectfont\@headingfontfamily\strut##1}\\
 		}
 		\begin{adjustbox}{valign=t}\begin{minipage}{0.25\textwidth}
 		\setlength{\parskip}{\baselineskip}\raggedleft
@@ -35,7 +35,7 @@
 		\renewcommand\section[1]{
 			\vspace{0.3\baselineskip}
 			\rule[0.25\baselineskip]{2cm}{2pt}\quad
-			{\fontsize{14}{16.8}\gothic\strut##1}\par
+			{\fontsize{14}{16.8}\@headingfontfamily\strut##1}\par
 		}
 		\begin{adjustbox}{valign=t}\begin{minipage}{0.7\textwidth}
 	}{
@@ -65,10 +65,14 @@
 	urlcolor=Blue
 }
 
+\def\@mainfont{Segoe UI}
+\def\@entryfont{Gill Sans MT}
+\def\@headingfont{Century Gothic}
+
 \defaultfontfeatures{Ligatures=TeX}
-\setmainfont{Segoe UI}
-\newfontfamily\gothic{Century Gothic}
-\newfontfamily\sans{Gill Sans MT}
+\setmainfont{\@mainfont}
+\newfontfamily\@headingfontfamily{\@headingfont}
+\newfontfamily\@entryfontfamily{\@entryfont}
 
 \setmainlanguage{english}
 \setlength\parindent{0pt}
@@ -97,6 +101,18 @@
 	\def\@contactinfo{#1}
 }
 
+\def\mainfont#1{
+	\def\@mainfont{#1}
+}
+
+\def\entryfont#1{
+	\def\@entryfont{#1}
+}
+
+\def\headingfont#1{
+	\def\@headingfont{#1}
+}
+
 \newenvironment{bullets}{
 		\vspace{-0.55\baselineskip}
 	\begin{itemize} \itemsep1pt \parskip0pt \parsep0pt
@@ -108,15 +124,15 @@
 \newcommand{\entry}[3]{
 	\vspace{0.1\baselineskip}
 	{
-		\fontsize{12}{14.4} \sans
+		\fontsize{12}{14.4} \@entryfontfamily
 		#1 \ifblank{#1}{}{\ifblank{#2}{}{|}} #2 \hfill \textit{#3}
 	}\\[-0.8\baselineskip]
 }
 
 \providecommand\@makeheader{
 		\parbox{2.5in}{\raggedright
-			{\fontsize{30pt}{36pt}\selectfont\gothic \@name}\\[0.2\baselineskip]
-			{\fontsize{15pt}{18pt}\selectfont\gothic \@title}
+			{\fontsize{30pt}{36pt}\selectfont\@headingfontfamily \@name}\\[0.2\baselineskip]
+			{\fontsize{15pt}{18pt}\selectfont\@headingfontfamily \@title}
 		}\hfill
 		\parbox{2.5in}{\raggedleft\onehalfspacing
 			\@contactinfo
@@ -131,7 +147,7 @@
 	\renewcommand\section[1]{
 		\vspace{0.3\baselineskip}
 		\rule[0.25\baselineskip]{2cm}{2pt}\quad
-		{\fontsize{14}{16.8}\gothic\strut##1}\par
+		{\fontsize{14}{16.8}\@headingfontfamily\strut##1}\par
 	}
 	\@makeheader
 }{}
