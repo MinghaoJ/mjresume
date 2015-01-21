@@ -65,9 +65,10 @@
 	urlcolor=Blue
 }
 
-\setmainfont[Ligatures=TeX]{Segoe UI}
-\newfontfamily\gothic{Century Gothic}[Ligatures=TeX]
-\newfontfamily\sans{Gill Sans MT}[Ligatures=TeX]
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{Segoe UI}
+\newfontfamily\gothic{Century Gothic}
+\newfontfamily\sans{Gill Sans MT}
 
 \setmainlanguage{english}
 \setlength\parindent{0pt}
