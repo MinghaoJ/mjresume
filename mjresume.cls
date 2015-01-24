@@ -10,7 +10,7 @@
 % 2005/12/01 or later.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mjresume}[2015/01/18 Minghao's custom resume class]
+\ProvidesClass{mjresume}[2015/01/18 v1.0 Minghao's custom resume class]
 
 %%%%%%%% Class Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \DeclareOption{sidebar}{
